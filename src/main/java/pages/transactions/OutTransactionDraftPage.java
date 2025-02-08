@@ -36,6 +36,7 @@ public class OutTransactionDraftPage {
   private By civilIdNumber = By.id("TransactionName_CivilID");
   private By firstName = By.id("TransactionName_FirstName");
   private By sendSMSCheckBox = By.id("TransactionName_SendSMS");
+  //==============================Attachments==============================================
   private By attachFileButton = By.id("Attachment");
   private By attachmentType = By.id("ddlAttachmentType");
   private By uploadAttachment = By.id("aTextEditor");
@@ -47,6 +48,8 @@ public class OutTransactionDraftPage {
       "//table[@id='grid-table-grdArchiving']//tr[contains(@class,'grid-row')]");
   private By uploadAttachmentContainer = By.id("uploadContainer");
   private By saveTransactionButton = By.id("btnSaveOutboundExternal");
+  //==============================================================================================
+  //=========================================Printouts============================================
   private By printTrxDeliveryReportButton = By.xpath(
       "//a[contains(@onclick,'PrintTransactionDeliveryReport')]");
   private By printBarcodeStickerButton = By.id("btnPrintBarcodeSticker");
@@ -66,12 +69,14 @@ public class OutTransactionDraftPage {
   private By successDialogue = Locator.hasTagName("button")
       .containsText("تمت عملية التعديل بنجاح").insideShadowDom(confirmationAndSuccessModal).build();
   private By successCloseButton = By.xpath("//button[contains(text(), \"إغلاق\")]");
+  //========================================TransactionSaveSuccessPopUp=============================
   private By transactionNumberFromConfirmation = By.xpath(
       "//div[contains(@class,'col-xs-4')]/span[contains(@class,'indent-text')]");
   private By backToIncomTransactionButton = By.xpath(
       "//button[contains(@class, 'redirect-to-tray')]");
   private By printTransactionDeliveryReportFromPopup = By.xpath(
       "//button[contains(@class,'move-to-assignment')]");
+  //==========================================================================================
 
   private String transactionNumber;
   @Getter
