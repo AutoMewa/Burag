@@ -1,0 +1,11 @@
+{
+  "transactionReport1": {
+    "type": "الكل"
+  },
+  "transactionReport2": {
+    "type": "وارد خارجي"
+  },
+  "transactionReport3": {
+    "type": "صادر خارجي"
+  }
+}

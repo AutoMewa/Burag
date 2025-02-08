@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Smoke Test" verbose="2">
+    <test name="تقارير">
+        <packages>
+            <package name="reports"/>
+        </packages>
+    </test>
+    <test name="معاملات">
+       <packages>
+           <package name="tansactions.صادر_عام"/>
+           <package name="tansactions.وارد_عام"/>
+       </packages>
+    </test>
+</suite>
