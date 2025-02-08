@@ -47,15 +47,5 @@ public class TrialTestClass extends TestBase {
         myTransactionsPage = transactionCopiesDetailsPage.navigateToMyTransactions()
                 .getSystemAdminComponent().changeDepartment("مكتب نائب الوزير");
         driver.browser().captureScreenshot();
-/*        OutTransactionsPage outTransactionsPage = myTransactionsPage.navigateToOutTransactions();
-        OutTransactionDraftPage outTransactionDraftPage = outTransactionsPage.navigateToExportedTransactions().tabOnEditFirstOutTransaction();
-        String transactionDraftNumber = outTransactionDraftPage.getOutTransactionNumber();
-        outTransactionDraftPage.modifyTransactionSubject();
-        String transactionDraftSubject = outTransactionDraftPage.getTransactionSubject();
-        outTransactionsPage = outTransactionDraftPage.navigateToTransactionsPage().navigateToExportedTransactions();
-        String transactionNumber = outTransactionsPage.getFirstTransactionNumber();
-        String transactionSubject = outTransactionsPage.getFirstTransactionDescription();
-        Validations.assertThat().object(transactionDraftNumber).equals(transactionNumber);
-        Validations.assertThat().object(transactionDraftSubject).equals(transactionSubject);*/
     }
 }
