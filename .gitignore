@@ -5,3 +5,7 @@
 /execution-summary/
 /performanceReport/
 /target/
+/src/main/resources/downloads/AssignmentPaper/*
+/src/main/resources/downloads/DeliveryStatement/*
+/src/main/resources/downloads/TransactionBarcode/*
+/src/main/resources/downloads/TransactionDeliveryReport/*

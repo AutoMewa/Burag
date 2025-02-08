@@ -1,7 +1,6 @@
 package pages.orgUnitTransactions;
 
 import com.shaft.driver.SHAFT;
-import com.shaft.gui.internal.locator.Locator;
 import components.*;
 import io.qameta.allure.Step;
 import lombok.Getter;
