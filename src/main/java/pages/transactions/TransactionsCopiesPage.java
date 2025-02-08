@@ -11,32 +11,33 @@ import org.openqa.selenium.By;
 
 public class TransactionsCopiesPage extends TransactionsNavigationPanelComponent {
 
-    private By transactionCopyCard = By.cssSelector(".box-grid");
-    private By firtTransactionCopyCard = By.xpath("(//div[contains(@class,'box-grid')]//div[contains(@class,'pr-1')])[1]");
-    private By firstDisplayDetailsCopyButton = By.xpath("(//a[@id='link'])[1]");
+  private By transactionCopyCard = By.cssSelector(".box-grid");
+  private By firtTransactionCopyCard = By.xpath(
+      "(//div[contains(@class,'box-grid')]//div[contains(@class,'pr-1')])[1]");
+  private By firstDisplayDetailsCopyButton = By.xpath("(//a[@id='link'])[1]");
 
 
-    @Getter
-    private TransactionsOperationsComponent transactionsOperationsComponent;
-    @Getter
-    private SystemAdminComponent systemAdminComponent;
+  @Getter
+  private TransactionsOperationsComponent transactionsOperationsComponent;
+  @Getter
+  private SystemAdminComponent systemAdminComponent;
 
-    public TransactionsCopiesPage(SHAFT.GUI.WebDriver driver) {
-        super(driver, new HorizontalMenusComponent(driver));
-        transactionsOperationsComponent = new TransactionsOperationsComponent(driver);
-        systemAdminComponent = new SystemAdminComponent(driver);
-    }
+  public TransactionsCopiesPage(SHAFT.GUI.WebDriver driver) {
+    super(driver, new HorizontalMenusComponent(driver));
+    transactionsOperationsComponent = new TransactionsOperationsComponent(driver);
+    systemAdminComponent = new SystemAdminComponent(driver);
+  }
 
-    @Step("الحصول على رقم نسخة المعاملة الأولى")
-    public String getFirstTransactionNumber() {
-        return driver.element().getText(firtTransactionCopyCard);
-    }
+  @Step("الحصول على رقم نسخة المعاملة الأولى")
+  public String getFirstTransactionNumber() {
+    return driver.element().getText(firtTransactionCopyCard);
+  }
 
-    @Step("عرض تفاصيل صورة المعاملة")
-    public TransactionCopiesDetailsPage goToTransactionCopyDetails() {
-        driver.element().scrollToElement(firstDisplayDetailsCopyButton);
-        driver.element().click(firstDisplayDetailsCopyButton);
-        return new TransactionCopiesDetailsPage(driver);
-    }
+  @Step("عرض تفاصيل صورة المعاملة")
+  public TransactionCopiesDetailsPage goToTransactionCopyDetails() {
+    driver.element().scrollToElement(firstDisplayDetailsCopyButton);
+    driver.element().click(firstDisplayDetailsCopyButton);
+    return new TransactionCopiesDetailsPage(driver);
+  }
 
 }

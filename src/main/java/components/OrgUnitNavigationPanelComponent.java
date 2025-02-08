@@ -5,12 +5,13 @@ import lombok.Getter;
 
 public class OrgUnitNavigationPanelComponent {
 
-    protected SHAFT.GUI.WebDriver driver;
-    @Getter
-    protected HorizontalMenusComponent hMComponent;
+  protected SHAFT.GUI.WebDriver driver;
+  @Getter
+  protected HorizontalMenusComponent hMComponent;
 
-    public OrgUnitNavigationPanelComponent(SHAFT.GUI.WebDriver driver, HorizontalMenusComponent hMComponent) {
-        this.driver = driver;
-        this.hMComponent = hMComponent;
-    }
+  public OrgUnitNavigationPanelComponent(SHAFT.GUI.WebDriver driver,
+      HorizontalMenusComponent hMComponent) {
+    this.driver = driver;
+    this.hMComponent = hMComponent;
+  }
 }
