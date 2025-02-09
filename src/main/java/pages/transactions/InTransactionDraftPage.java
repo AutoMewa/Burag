@@ -144,8 +144,8 @@ public class InTransactionDraftPage {
   Using normalize-space() instead of text() in order to handle the white spaces variations
    * */
   private By imageCheckBoxForAssignmentPaperOrgUnit(String orgUnitName) {
-    return By.xpath(
-        "(//div[label[normalize-space()='%s']]/following::div[@class='checkbox']/label/span[@class='cr'])[1]");
+    return By.xpath(String.format(
+        "(//div[label[normalize-space()='%s']]/following::div[@class='checkbox']/label/span[@class='cr'])[1]",orgUnitName));
   }
 
   private By transferRadioButtonForAssignmentPaperOrgUnit(String orgUnitName) {
@@ -384,8 +384,9 @@ public class InTransactionDraftPage {
   public InTransactionDraftPage printAssignmentPaperFromConfirmation() {
     driver.element().click(printAssignmentPaperButton).verifyThat(printAssignmenPaperFromPreview)
         .isVisible();
-    driver.element().clickUsingJavascript(printAssignmenPaperFromPreview).verifyThat(loadingSpinner)
+    driver.element().click(printAssignmenPaperFromPreview).verifyThat(loadingSpinner)
         .isVisible();
+    driver.element().waitToBeInvisible(loadingSpinner);
     return this;
   }
 

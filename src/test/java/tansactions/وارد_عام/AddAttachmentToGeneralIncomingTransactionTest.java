@@ -68,7 +68,7 @@ public class AddAttachmentToGeneralIncomingTransactionTest extends TestBase {
                 .getTransactionsOperationsComponent().searchForTransactionWithId(transactionDraftNumber, new MyTransactionsPage(driver));
         int numberOfAttachmentsOnCard = myTransactionsPage.getNumberOfAttachmentsOnFirstCard();
 
-        Validations.assertThat().number(numberOfAttachmentsOnCard).equals(numberOfAttachmentsAfterThirdAttachment);
+        Validations.assertThat().number(numberOfAttachmentsOnCard).isEqualTo(numberOfAttachmentsAfterThirdAttachment);
         double fileSize = getFileSize(directory+"/Download.pdf");
         //The created file size is greater than 150 KB which is the average file size
         Validations.verifyThat().number(fileSize).isGreaterThan(150);

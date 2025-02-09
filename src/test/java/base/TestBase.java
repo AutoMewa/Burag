@@ -10,35 +10,37 @@ import java.util.Map;
 
 public class TestBase {
 
-   protected SHAFT.GUI.WebDriver driver;
-   protected SHAFT.TestData.JSON testData;
+  protected SHAFT.GUI.WebDriver driver;
+  protected SHAFT.TestData.JSON testData;
 
-   @Step("فتح منصة براق")
-   public void openBuragApp() {
-       ChromeOptions options = new ChromeOptions();
-       options.addArguments("--disable-extensions");
-       options.addArguments("--incognito");
+  @Step("فتح منصة براق")
+  public void openBuragApp() {
+    ChromeOptions options = new ChromeOptions();
+    options.addArguments("--disable-extensions");
+    options.addArguments("--incognito");
+    options.addArguments("--disable-cache", "--disk-cache-size=0");
 
-        driver = new SHAFT.GUI.WebDriver(DriverFactory.DriverType.CHROME , options);
-        driver.browser().navigateToURL(testData.getTestData("appURL"));
-    }
+    driver = new SHAFT.GUI.WebDriver(DriverFactory.DriverType.CHROME, options);
+    driver.browser().navigateToURL(testData.getTestData("appURL"));
+  }
 
-    @Step("فتح منصة براق")
-    public void openBuragAppWithCustomCapabilities(String directory) {
-          // Configure preferences for Chrome
-        Map<String, Object> prefs = new HashMap<>();
-        prefs.put("download.default_directory", directory); // Set custom directory
-        prefs.put("download.prompt_for_download", false); // Disable download prompt
-        prefs.put("plugins.always_open_pdf_externally", true); // Download PDF instead of opening
+  @Step("فتح منصة براق")
+  public void openBuragAppWithCustomCapabilities(String directory) {
+    // Configure preferences for Chrome
+    Map<String, Object> prefs = new HashMap<>();
+    prefs.put("download.default_directory", directory); // Set custom directory
+    prefs.put("download.prompt_for_download", false); // Disable download prompt
+    prefs.put("plugins.always_open_pdf_externally", true); // Download PDF instead of opening
 
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("prefs", prefs);
-        options.addArguments("--disable-extensions");
-        options.addArguments("--incognito");
-        // Add the argument to use the system print dialog
-        // options.addArguments("--kiosk-printing");
-        driver = new SHAFT.GUI.WebDriver(DriverFactory.DriverType.CHROME , options);
-        driver.browser().navigateToURL(testData.getTestData("appURL"));
-    }
+    ChromeOptions options = new ChromeOptions();
+    options.setExperimentalOption("prefs", prefs);
+    options.addArguments("--disable-extensions");
+    options.addArguments("--incognito");
+    options.addArguments("--disable-cache", "--disk-cache-size=0");
+    // Add the argument to use the system print dialog
+    // options.addArguments("--kiosk-printing");
+    driver = new SHAFT.GUI.WebDriver(DriverFactory.DriverType.CHROME, options);
+    driver.browser().navigateToURL(testData.getTestData("appURL"));
+  }
 
 }
