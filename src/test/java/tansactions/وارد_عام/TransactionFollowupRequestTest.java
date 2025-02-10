@@ -50,13 +50,13 @@ public class TransactionFollowupRequestTest extends TestBase {
 
         TransactionsFollowupPage transactionsFollowupPage = myTransactionsPage.navigateToTransactionFollowup();
         transactionsFollowupPage = transactionsFollowupPage.navigateToSentFollowUpTab().getTransactionsOperationsComponent()
-                .searchForTransactionWithId(transactionNumber, new TransactionsFollowupPage(driver));
+                .searchForTransactionWithId(transactionNumber, transactionsFollowupPage);
 
         String firstTransactionFollowupNumberOnCard = transactionsFollowupPage.getFirstTransactionNumber();
         int numberOfAttachmentsOnFollowupCard = transactionsFollowupPage.getNumberOfAttachmentsOnFirstCard();
 
-        Validations.verifyThat().object(firstTransactionFollowupNumberOnCard).equals(transactionNumber);
-        Validations.verifyThat().number(numberOfAttachmentsOnFollowupCard).equals(numberOfAttachmentsOnCard);
+        Validations.verifyThat().object(firstTransactionFollowupNumberOnCard).isEqualTo(transactionNumber);
+        Validations.verifyThat().number(numberOfAttachmentsOnFollowupCard).isEqualTo(numberOfAttachmentsOnCard);
     }
 
     //======================
@@ -86,13 +86,13 @@ public class TransactionFollowupRequestTest extends TestBase {
 
         TransactionsFollowupPage transactionsFollowupPage = myTransactionsPage.navigateToTransactionFollowup();
         transactionsFollowupPage = transactionsFollowupPage.navigateToSentFollowUpTab().getTransactionsOperationsComponent()
-                .searchForTransactionWithId(transactionNumber, new TransactionsFollowupPage(driver));
+            .searchForTransactionWithId(transactionNumber, transactionsFollowupPage);
 
         String firstTransactionFollowupNumberOnCard = transactionsFollowupPage.getFirstTransactionNumber();
         int numberOfAttachmentsOnFollowupCard = transactionsFollowupPage.getNumberOfAttachmentsOnFirstCard();
 
-        Validations.verifyThat().object(firstTransactionFollowupNumberOnCard).equals(transactionNumber);
-        Validations.verifyThat().number(numberOfAttachmentsOnFollowupCard).equals(numberOfAttachmentsOnCard);
+        Validations.verifyThat().object(firstTransactionFollowupNumberOnCard).isEqualTo(transactionNumber);
+        Validations.verifyThat().number(numberOfAttachmentsOnFollowupCard).isEqualTo(numberOfAttachmentsOnCard);
     }
 
     //======================

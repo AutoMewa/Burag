@@ -68,10 +68,14 @@ public class BriefcaseReportsTest extends TestBase {
 
         BriefcasePage briefcasePage = briefcaseReportPage.getHMComponent().navigateToTransactionsTab().navigateToBriefcase();
 
-        String transactionNoOnCard = briefcasePage.searchForTransaction(firstTransactionNumber).getTransactionNumberFromCard();
+        String transactionNoOnCard = briefcasePage.searchForTransaction(firstTransactionNumber).getTransactionNumberFromFirstCard();
+        int numberOfTransactionCards = briefcasePage.getNumberOfRetrievedCards();
+        Validations.verifyThat().number(numberOfTransactionCards).isGreaterThanOrEquals(1);
         Validations.verifyThat().object(transactionNoOnCard).isEqualTo(firstTransactionNumber);
 
-        transactionNoOnCard = briefcasePage.searchForTransaction(randomTransactionNumber).getTransactionNumberFromCard();
+        transactionNoOnCard = briefcasePage.searchForTransaction(randomTransactionNumber).getTransactionNumberFromFirstCard();
+        numberOfTransactionCards = briefcasePage.getNumberOfRetrievedCards();
+        Validations.verifyThat().number(numberOfTransactionCards).isGreaterThanOrEquals(1);
         Validations.verifyThat().object(transactionNoOnCard).isEqualTo(randomTransactionNumber);
 
     }

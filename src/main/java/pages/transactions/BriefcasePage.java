@@ -12,6 +12,7 @@ public class BriefcasePage extends TransactionsNavigationPanelComponent {
   private By searchButton = By.cssSelector(".btn.btn-st1");
   private By loadingSpinner = By.id("loadingModal");
   private By transactionNumberOnCard = By.cssSelector(".pr-1");
+  private By transactionNumberOnFirstCard = By.xpath("(//div[@class='pr-1'])[1]");
 
   public BriefcasePage(SHAFT.GUI.WebDriver driver) {
     super(driver, new HorizontalMenusComponent(driver));
@@ -26,7 +27,12 @@ public class BriefcasePage extends TransactionsNavigationPanelComponent {
   }
 
   @Step("رقم المعاملة على كارت العرض")
-  public String getTransactionNumberFromCard() {
-    return driver.element().getText(transactionNumberOnCard);
+  public String getTransactionNumberFromFirstCard() {
+    return driver.element().getText(transactionNumberOnFirstCard);
+  }
+
+  @Step("عدد الكروت المسترجعة برقم المعاملة فى حقيبة العرض")
+  public int getNumberOfRetrievedCards() {
+    return driver.element().getElementsCount(transactionNumberOnCard);
   }
 }

@@ -112,15 +112,15 @@ public class InternalCopiesTest extends TestBase {
                 .changeDepartment(attachmentsData.getTestData("copy1.orgUnitName"));
         TransactionsCopiesPage transactionsCopiesPage = myTransactionsPage.navigateToTransactionsCopies();
         String transactionCopyNumber = transactionsCopiesPage.getTransactionsOperationsComponent()
-                .searchForTransactionWithId(transactionNumber, transactionsCopiesPage).getFirstTransactionNumber();
-        Validations.verifyThat().object(transactionCopyNumber).equals(transactionNumber);
+                .searchForTransactionWithId(transactionNumber, new TransactionsCopiesPage(driver)).getFirstTransactionNumber();
+        Validations.verifyThat().object(transactionCopyNumber).isEqualTo(transactionNumber);
 
         TransactionCopiesDetailsPage transactionCopiesDetailsPage = transactionsCopiesPage.goToTransactionCopyDetails();
         String transactionNumberFromCopy1 = transactionCopiesDetailsPage.getTransactionNumber();
         boolean isAttachmentTypePresent1 = transactionCopiesDetailsPage
                 .confirmExistenceOfSpecificContentInTableOfCopies(copyType1);
 
-        Validations.verifyThat().object(transactionNumberFromCopy1).equals(transactionNumber);
+        Validations.verifyThat().object(transactionNumberFromCopy1).isEqualTo(transactionNumber);
         Validations.verifyThat().object(isAttachmentTypePresent1).isTrue();
 
         //Validate the second copy after switching to its department
@@ -128,30 +128,30 @@ public class InternalCopiesTest extends TestBase {
                 .changeDepartment(attachmentsData.getTestData("copy2.orgUnitName"));
         transactionsCopiesPage =  myTransactionsPage.navigateToTransactionsCopies();
         String transactionCopyNumber2 =transactionsCopiesPage.getTransactionsOperationsComponent()
-                .searchForTransactionWithId(transactionNumber, transactionsCopiesPage).getFirstTransactionNumber();
-        Validations.verifyThat().object(transactionCopyNumber2).equals(transactionNumber);
+                .searchForTransactionWithId(transactionNumber, new TransactionsCopiesPage(driver)).getFirstTransactionNumber();
+        Validations.verifyThat().object(transactionCopyNumber2).isEqualTo(transactionNumber);
 
         transactionCopiesDetailsPage = transactionsCopiesPage.goToTransactionCopyDetails();
         String transactionNumberFromCopy2 = transactionCopiesDetailsPage.getTransactionNumber();
         boolean isAttachmentTypePresent2 = transactionCopiesDetailsPage
                 .confirmExistenceOfSpecificContentInTableOfCopies(copyType2);
 
-        Validations.verifyThat().object(transactionNumberFromCopy2).equals(transactionNumber);
+        Validations.verifyThat().object(transactionNumberFromCopy2).isEqualTo(transactionNumber);
         Validations.verifyThat().object(isAttachmentTypePresent2).isTrue();
 
         //Validate the third copy after switching to its department
         myTransactionsPage = transactionsCopiesPage.getSystemAdminComponent()
                 .changeDepartment(attachmentsData.getTestData("copy3.orgUnitName"));
         String transactionCopyNumber3 = myTransactionsPage.navigateToTransactionsCopies().getTransactionsOperationsComponent()
-                .searchForTransactionWithId(transactionNumber, transactionsCopiesPage).getFirstTransactionNumber();
-        Validations.verifyThat().object(transactionCopyNumber3).equals(transactionNumber);
+                .searchForTransactionWithId(transactionNumber, new TransactionsCopiesPage(driver)).getFirstTransactionNumber();
+        Validations.verifyThat().object(transactionCopyNumber3).isEqualTo(transactionNumber);
 
         transactionCopiesDetailsPage = transactionsCopiesPage.goToTransactionCopyDetails();
         String transactionNumberFromCopy3 = transactionCopiesDetailsPage.getTransactionNumber();
         boolean isAttachmentTypePresent3 = transactionCopiesDetailsPage
                 .confirmExistenceOfSpecificContentInTableOfCopies(copyType3);
 
-        Validations.verifyThat().object(transactionNumberFromCopy3).equals(transactionNumber);
+        Validations.verifyThat().object(transactionNumberFromCopy3).isEqualTo(transactionNumber);
         Validations.verifyThat().object(isAttachmentTypePresent3).isTrue();
     }
 
@@ -194,7 +194,7 @@ public class InternalCopiesTest extends TestBase {
                 .changeDepartment(attachmentsData.getTestData("copy1.orgUnitName"));
         TransactionsCopiesPage transactionsCopiesPage = myTransactionsPage.navigateToTransactionsCopies();
         String transactionCopyNumber = transactionsCopiesPage.getTransactionsOperationsComponent()
-                .searchForTransactionWithId(transactionNumber, transactionsCopiesPage).getFirstTransactionNumber();
+                .searchForTransactionWithId(transactionNumber, new TransactionsCopiesPage(driver)).getFirstTransactionNumber();
 
         Validations.verifyThat().object(transactionCopyNumber).isEqualTo(transactionNumber);
 
@@ -203,7 +203,7 @@ public class InternalCopiesTest extends TestBase {
         boolean isAttachmentTypePresent1 = transactionCopiesDetailsPage
                 .confirmExistenceOfSpecificContentInTableOfCopies(copyType1);
 
-        Validations.verifyThat().object(transactionNumberFromCopy1).equals(transactionNumber);
+        Validations.verifyThat().object(transactionNumberFromCopy1).isEqualTo(transactionNumber);
         Validations.verifyThat().object(isAttachmentTypePresent1).isTrue();
 
         //Validate the second copy after switching to its department
@@ -211,30 +211,30 @@ public class InternalCopiesTest extends TestBase {
                 .changeDepartment(attachmentsData.getTestData("copy2.orgUnitName"));
         transactionsCopiesPage =  myTransactionsPage.navigateToTransactionsCopies();
         String transactionCopyNumber2 =transactionsCopiesPage.getTransactionsOperationsComponent()
-                .searchForTransactionWithId(transactionNumber, transactionsCopiesPage).getFirstTransactionNumber();
-        Validations.verifyThat().object(transactionCopyNumber2).equals(transactionNumber);
+                .searchForTransactionWithId(transactionNumber, new TransactionsCopiesPage(driver)).getFirstTransactionNumber();
+        Validations.verifyThat().object(transactionCopyNumber2).isEqualTo(transactionNumber);
 
         transactionCopiesDetailsPage = transactionsCopiesPage.goToTransactionCopyDetails();
         String transactionNumberFromCopy2 = transactionCopiesDetailsPage.getTransactionNumber();
         boolean isAttachmentTypePresent2 = transactionCopiesDetailsPage
                 .confirmExistenceOfSpecificContentInTableOfCopies(copyType2);
 
-        Validations.verifyThat().object(transactionNumberFromCopy2).equals(transactionNumber);
+        Validations.verifyThat().object(transactionNumberFromCopy2).isEqualTo(transactionNumber);
         Validations.verifyThat().object(isAttachmentTypePresent2).isTrue();
 
         //Validate the third copy after switching to its department
         myTransactionsPage = transactionsCopiesPage.getSystemAdminComponent()
                 .changeDepartment(attachmentsData.getTestData("copy3.orgUnitName"));
         String transactionCopyNumber3 = myTransactionsPage.navigateToTransactionsCopies().getTransactionsOperationsComponent()
-                .searchForTransactionWithId(transactionNumber, transactionsCopiesPage).getFirstTransactionNumber();
-        Validations.verifyThat().object(transactionCopyNumber3).equals(transactionNumber);
+                .searchForTransactionWithId(transactionNumber, new TransactionsCopiesPage(driver)).getFirstTransactionNumber();
+        Validations.verifyThat().object(transactionCopyNumber3).isEqualTo(transactionNumber);
 
         transactionCopiesDetailsPage = transactionsCopiesPage.goToTransactionCopyDetails();
         String transactionNumberFromCopy3 = transactionCopiesDetailsPage.getTransactionNumber();
         boolean isAttachmentTypePresent3 = transactionCopiesDetailsPage
                 .confirmExistenceOfSpecificContentInTableOfCopies(copyType3);
 
-        Validations.verifyThat().object(transactionNumberFromCopy3).equals(transactionNumber);
+        Validations.verifyThat().object(transactionNumberFromCopy3).isEqualTo(transactionNumber);
         Validations.verifyThat().object(isAttachmentTypePresent3).isTrue();
    }
 }

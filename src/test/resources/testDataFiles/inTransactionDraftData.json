@@ -34,6 +34,10 @@
     "orgUnitName": "وكالة البيئة",
     "copyReason": "لإكمال اللازم معا"
   },
+  "followup": {
+    "orgUnitNum": "1018",
+    "orgUnitName": "وكالة الزراعة"
+  },
   "followup1":{
     "orgUnitNum": "1",
     "orgUnitName": "مكتب الوزير"

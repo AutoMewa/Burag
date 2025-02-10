@@ -98,6 +98,20 @@ public class GeneralOperations {
     return HijrahDate.from(currentDate).format(formatter);
   }
 
+  @Step("Get Hijri Date Days Before")
+  public static String getHijriDateDaysBefore(int numberOfDays) {
+    LocalDate currentDate = LocalDate.now().minusDays(numberOfDays);
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    return HijrahDate.from(currentDate).format(formatter);
+  }
+
+  @Step("Get Hijri Date Days After")
+  public static String getHijriDateDaysAfter(int numberOfDays) {
+    LocalDate currentDate = LocalDate.now().plusDays(numberOfDays);
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    return HijrahDate.from(currentDate).format(formatter);
+  }
+
   @Step("Get Hijri Date Week Before")
   public static String getHijriDateWeeksBefore(int numberOfWeeks) {
     LocalDate currentDate = LocalDate.now().minusWeeks(numberOfWeeks);

@@ -98,6 +98,7 @@ public class InTransactionDraftPage {
   private By followupOrgUnitAutoCompleteMenu = By.cssSelector("#divAutoComplateMenu");
   private By followupFirstOrgChartAutoSuggestion = By.cssSelector(
       "#divAutoComplateMenu div:nth-of-type(1)");
+  private By followupDate = By.id("FollowUpDateCal");
   private By addTransactionFollowupButton = By.id("btnConfirmAddFollowUp");
   private By transactionFollowupRequestsGrid = By.id("grid-table-grdFollowUps");
   private By transactionFollowupGridRow = By.xpath(
@@ -129,20 +130,9 @@ public class InTransactionDraftPage {
       "(//input[contains(@class,' inp')])[2]");
   private By saveAttachmentButton = By.id("btnShowCopiesAttDialog");
   private By sendAssignmentButton = By.id("GetUserDelegationsById");
-  @Getter
-  private String transactionNumberFromConfirmation;
-  @Getter
-  private String modifiedTransactionDescription =
-      "Description: " + GeneralOperations.getCurrentDateTime("yyyy-MM-dd HH:mm:ss");
-  //================================================================================================================
-
-  public InTransactionDraftPage(SHAFT.GUI.WebDriver driver) {
-    this.driver = driver;
-  }
-
   /*
-  Using normalize-space() instead of text() in order to handle the white spaces variations
-   * */
+Using normalize-space() instead of text() in order to handle the white spaces variations
+ * */
   private By imageCheckBoxForAssignmentPaperOrgUnit(String orgUnitName) {
     return By.xpath(String.format(
         "(//div[label[normalize-space()='%s']]/following::div[@class='checkbox']/label/span[@class='cr'])[1]",orgUnitName));
@@ -152,6 +142,19 @@ public class InTransactionDraftPage {
     return By.xpath(String.format(
         "(//div[label[normalize-space()='%s']]/following::div[@class='radio']/label/span[@class='cr'])[1]",
         orgUnitName));
+  }
+  //============================================================================================
+  @Getter
+  private String transactionNumberFromConfirmation;
+  @Getter
+  private String modifiedTransactionDescription =
+      "Description: " + GeneralOperations.getCurrentDateTime("yyyy-MM-dd HH:mm:ss");
+  @Getter
+  private String followupHijriDate = GeneralOperations.getCurrentHijriDate();
+  //================================================================================================================
+
+  public InTransactionDraftPage(SHAFT.GUI.WebDriver driver) {
+    this.driver = driver;
   }
 
   @Step("الحصول على رقم المعاملة من صفحة التعديل")
@@ -351,8 +354,6 @@ public class InTransactionDraftPage {
     driver.element().type(transactionSubjectTextField,
         "Description: " + GeneralOperations.getCurrentDateTime("yyyy-MM-dd HH:mm:ss"));
     driver.element().scrollToElement(saveModifiedTransactionButton);
-    //driver.element().clickUsingJavascript(saveModifiedTransactionButton);
-    // driver.element().click(saveModifiedTransactionButton);
     WebElement element = driver.getDriver().findElement(saveModifiedTransactionButton);
     // Use JavascriptExecutor to click the element
     JavascriptExecutor js = (JavascriptExecutor) driver.getDriver();
@@ -407,7 +408,8 @@ public class InTransactionDraftPage {
     int numberOfFollowupRequests = getNumberOfFollowupRequests();
     driver.element().click(followupOrgUnitNumber).clear(followupOrgUnitNumber)
         .type(followupOrgUnitNumber, orgUnitNumber)
-        .waitToBeReady(followupOrgUnitAutoCompleteMenu).click(followupFirstOrgChartAutoSuggestion);
+        .waitToBeReady(followupOrgUnitAutoCompleteMenu).click(followupFirstOrgChartAutoSuggestion)
+        .type(followupDate, followupHijriDate);
     driver.element().click(addTransactionFollowupButton)
         .waitToBeReady(followupConfirmationAndSuccessModal)
         .click(confirmAddFollowup)

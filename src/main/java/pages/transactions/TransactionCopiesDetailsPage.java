@@ -7,6 +7,7 @@ import io.qameta.allure.Step;
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.By;
+import utils.ElementsOperations;
 
 public class TransactionCopiesDetailsPage extends TransactionsNavigationPanelComponent {
 
@@ -20,17 +21,14 @@ public class TransactionCopiesDetailsPage extends TransactionsNavigationPanelCom
   }
 
   @Step("التأكد من وجود جدول الملحقات")
-  public boolean getAttachmentsTableContents() {
+  public boolean confirmAttachmentsTableIsNotEmpty() {
     List<Map<String, String>> tableRowsData = driver.element().getTableRowsData(tableOfAttchments);
     return !(tableRowsData.getFirst().isEmpty());
   }
 
   @Step("التأكد من وجود قيمة معينة داخل جدول الملحقات")
   public boolean confirmExistenceOfSpecificContentInTableOfCopies(String attachmentType) {
-    driver.element().waitUntilPresenceOfAllElementsLocatedBy(tableOfAttchments);
-    List<Map<String, String>> tableRowsData = driver.element().getTableRowsData(tableOfAttchments);
-    return tableRowsData.stream().anyMatch(map -> map.values().stream()
-        .anyMatch(value -> value.equals(attachmentType)));
+    return ElementsOperations.confirmValueExistenceInTable(attachmentType, tableOfAttchments, driver);
   }
 
   @Step("الحصول على رقم المعاملة من صفحة النسخة الداخلية")
