@@ -15,6 +15,8 @@ public class TransactionsFollowupPage extends TransactionsNavigationPanelCompone
       "(//div[contains(@class,'box-grid')]//div[contains(@class,'pr-1')])[1]");
   private By numberOfAttachmentsAtFirstFollowup = By.xpath(
       "(//div[contains(@class,'ml-auto')]/div[@class='info']//span)[1]");
+  private By dateOnTheFirstCard = By.xpath(
+      "(//div[contains(text(),'تاريخ المتابعة ')]/following-sibling::div[@class='result'])[1]");
   private By sentFollowupRequestsTab = By.id("SentFollowUpTab");
 
 
@@ -29,9 +31,10 @@ public class TransactionsFollowupPage extends TransactionsNavigationPanelCompone
     systemAdminComponent = new SystemAdminComponent(driver);
   }
 
-  @Step("الذهاب الى تبويب متابعات الادارى")
+  @Step("الذهاب الى تبويب متابعات الادارة")
   public TransactionsFollowupPage navigateToSentFollowUpTab() {
     driver.element().click(sentFollowupRequestsTab);
+    driver.browser().refreshCurrentPage();
     return this;
   }
 
@@ -48,5 +51,9 @@ public class TransactionsFollowupPage extends TransactionsNavigationPanelCompone
     return Integer.parseInt(trimmedNumber);
   }
 
+  @Step("الحصول على تاريخ المتابعة الأولى")
+  public String getFirstTransactionDate() {
+    return driver.element().getText(dateOnTheFirstCard);
+  }
 
 }

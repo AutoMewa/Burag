@@ -5,6 +5,7 @@ import components.HorizontalMenusComponent;
 import components.ReportsNavigationPanelComponent;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import utils.ElementsOperations;
 
 public class FollowUpReportPage extends ReportsNavigationPanelComponent {
 
@@ -18,6 +19,7 @@ public class FollowUpReportPage extends ReportsNavigationPanelComponent {
   private By transactionDateInReport = By.id("lblFromTo");
   private By reportResultsBody = By.className("tbody");
   private By reportResultsGridRows = By.xpath("//tr[contains(@class,'datarow')]");
+  private By tableOfResults = By.id("grid-table-GridTransactionReport");
 
   public FollowUpReportPage(SHAFT.GUI.WebDriver driver) {
     super(driver, new HorizontalMenusComponent(driver));
@@ -56,6 +58,11 @@ public class FollowUpReportPage extends ReportsNavigationPanelComponent {
         .click(generateReportButton)
         .verifyThat(loadingSpinner).isVisible();
     return this;
+  }
+
+  @Step("التأكد من وجود رقم المعاملة داخل جدول النتائج")
+  public boolean confirmTransactionNumberExistenceInReport(String transactionNumber) {
+    return ElementsOperations.confirmValueExistenceInTable(transactionNumber, tableOfResults, driver);
   }
 
 }

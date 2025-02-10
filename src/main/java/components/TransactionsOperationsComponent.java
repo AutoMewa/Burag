@@ -18,6 +18,7 @@ public class TransactionsOperationsComponent {
   private By filterTransactionId = By.id("TransId");
   private By filterTransactionNumber = By.id("TransNo");
   private By filterSearchButton = By.xpath("//input[@type='button']");
+  private By loadingSpinner = By.id("loadingModal");
 
 
   public TransactionsOperationsComponent(SHAFT.GUI.WebDriver driver) {
@@ -33,14 +34,15 @@ public class TransactionsOperationsComponent {
 
   @Step("البحث عن معاملة باستخدام رقم المعاملة")
   public <T> T searchForTransactionWithId(String transactionId, T pageObject) {
-    driver.element().click(filterButton);
+    driver.element().waitToBeReady(filterButton).click(filterButton);
     By inputField = driver.element().getElementsCount(filterTransactionId) > 0 ? filterTransactionId
         : filterTransactionNumber;
     driver.element().type(inputField, transactionId);
     driver.element()
-        .clickUsingJavascript(filterSearchButton)
-        //.click(filterSearchButton)
-        .verifyThat(filterButton).isEnabled();
+       // .clickUsingJavascript(filterSearchButton)
+        .click(filterSearchButton)
+        .waitToBeInvisible(loadingSpinner)
+        .verifyThat(filterSearchButton).isEnabled();
     return pageObject;
   }
 
